@@ -14,6 +14,8 @@ Here's a completed and playable chess board. It does not look very pretty but do
 
 Now in algorithm course I am learning how to make proper readable code in different files. This one was not made that properly. 
 
+IDK how to host a react app on github :( btw, the page will show this beautiful readme, but the board can be used by zip and npm run. :)
+
 -------------------------------------------------------------------------------------------------------------------------------------
 
 If you're still reading this, Why? :)
