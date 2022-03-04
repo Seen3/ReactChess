@@ -118,7 +118,7 @@ class Box extends react.Component {
         return (r * 8) + c;
     }
     onClk() {
-        if (selected===0 && this.state.unit !== '.' && ((this.state.unit[0]=='W' && turn==0)||(this.state.unit[0]=='B' && turn==1)))
+        if (selected===0 && this.state.unit !== '.' && ((this.state.unit[0]==='W' && turn==0)||(this.state.unit[0]==='B' && turn==1)))
         {
             selected=1;
             prev.col=this.state.column;
@@ -129,7 +129,7 @@ class Box extends react.Component {
             prev.pk=this.state.color;
             this.setState({ color: 'red' });
         }
-        else if (selected===1 &&(prev.row!=this.state.row && prev.col!=this.state.col))
+        else if (selected===1 &&(prev.row!==this.state.row && prev.col!==this.state.col))
         {
             selected=0;
             turn=!turn;
