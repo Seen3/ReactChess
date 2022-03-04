@@ -13,8 +13,13 @@ import wq from "./resources/wq.png"
 import wp from "./resources/wp.png"
 import wr from "./resources/wr.png"
 import wb from "./resources/wb.png"
-
+//globals :(
 let selected=0;
+let turn=0;
+
+
+
+
 let prev={
     unit:'',
     row:0,
@@ -22,7 +27,7 @@ let prev={
     img:'',
     blk:null,
     pk:'',
-}
+};
 export class Board extends react.Component {
     constructor(props) {
         super(props);
@@ -45,7 +50,7 @@ export class Board extends react.Component {
             [
                 "WR1", "WK1", "WB1", "WQ", "WK", "WB2", "WK2", "WR2"
             ],
-            ],
+            ]
         };
     }
     render() {
@@ -98,7 +103,7 @@ class Box extends react.Component {
             row: this.props.row,
             column: this.props.col,
             unit: this.props.board,
-            color: (this.getCol() % 2 ? 'brown' : 'lime'),
+            color: (this.getCol() % 2 ? '#787878' : '#d1d1d1'),
             img: this.showUnit(),
         };
         this.onClk = this.onClk.bind(this);
@@ -113,7 +118,7 @@ class Box extends react.Component {
         return (r * 8) + c;
     }
     onClk() {
-        if (selected==0 && this.state.unit != '.')
+        if (selected===0 && this.state.unit !== '.' && ((this.state.unit[0]=='W' && turn==0)||(this.state.unit[0]=='B' && turn==1)))
         {
             selected=1;
             prev.col=this.state.column;
@@ -124,9 +129,10 @@ class Box extends react.Component {
             prev.pk=this.state.color;
             this.setState({ color: 'red' });
         }
-        else if (selected==1)
+        else if (selected===1 &&(prev.row!=this.state.row && prev.col!=this.state.col))
         {
             selected=0;
+            turn=!turn;
             this.setState({
                 unit:prev.unit,
                 img:prev.img,
@@ -136,6 +142,7 @@ class Box extends react.Component {
                 img:blank,
                 color:prev.pk,
             })
+
         }
     }
     showUnit() {
